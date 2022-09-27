@@ -1,13 +1,20 @@
-URL = "http://data.nba.net/"
-
+BASE_URL = "http://data.nba.net"
+IMG_URL = {"args": ["last_name", "first_name"],"route": "https://nba-players.herokuapp.com/players/%s/%s"}
 
 CALENDAR = "/data/10s/prod/v1/calendar.json"
 
 SCOREBOARD = {
-    "args": "date",
-    "url": "/data/10s/prod/v1/%s/scoreboard.json"}
+    "args": ["date"],
+    "route": "/data/10s/prod/v1/%s/scoreboard.json"}
 
-LEAGUE_ROSTER_PLAYERS = {
-    "args": "year",
+LEAGUE_YEAR_PLAYERS = {
+    "args": ["year"],
     "route": "/data/10s/prod/v1/%s/players.json"
 }
+
+LEAGUE_YEAR_TEAMS = {
+    "args": ["year"],
+    "route": "/data/10s/prod/v1/%s/teams.json"
+}
+
+

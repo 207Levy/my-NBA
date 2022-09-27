@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+    <link rel="stylesheet" href="client/style.css" />
+    <title>My NBA</title>
+  </head>
+  <body>
+    <script id="player-template" type="text/x-handlebars-template">
+      <div class="player">
+        <img src="{{img}}" alt="player-pic" />
+        <p class="player-name">{{firstName}} {{lastName}}</p>
+        <p class="jersey">{{jersey}}</p>
+        <p class="pos">{{pos}}</p>
+      </div>
+    </script>
+
+    <h1 id="headline">My NBA</h1>
+
+    <div class="search">
+      <div id="check">
+        <input type="checkbox" id="active-player" name="active" value="True" />
+        <label for="active">active players only</label><br />
+      </div>
+      <input id="team-input" type="text" placeholder="TEAM NAME" />
+      <input id="year-input" type="text" , placeholder="YEAR" />
+      <button id="search-btn">GET TEAM</button>
+    </div>
+
+    <div id="players"></div>
+    <!-- <script src="js/nbaDataModel.js"></script>
+    <script src="js/nbaRenderer.js"></script>
+    <script src="js/nbaMain.js"></script> -->
+  </body>
+</html>

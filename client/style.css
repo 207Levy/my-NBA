@@ -1,0 +1,101 @@
+body {
+  background-image: url("background.png");
+  /* font-family: 'Yantramanav', sans-serif; */
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+
+  background-size: 90%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 5fr;
+  grid-template-areas:
+    "h"
+    "s"
+    "p";
+}
+
+#headline {
+  grid-area: h;
+  color: orange;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+  display: grid;
+  justify-content: center;
+}
+
+.search {
+  height: 25px;
+  display: grid;
+  column-gap: 5px;
+  row-gap: 3px;
+  border-radius: 10px;
+  grid-template-columns: 1fr 4fr 2fr 1fr;
+  grid-template-areas: "c ti yi sb";
+  grid-area: s;
+  /* border-bottom-right-radius: 10px; */
+}
+
+#check {
+  color: aqua;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  font-family: inherit;
+  grid-area: c;
+}
+
+#team-input {
+  border-radius: inherit;
+  font-family: inherit;
+  grid-area: ti;
+}
+
+#year-input {
+  border-radius: inherit;
+  font-family: inherit;
+  grid-area: yi;
+}
+
+#search-btn {
+  border-radius: inherit;
+  font-family: inherit;
+  grid-area: sb;
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  border: 0;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-size: large;
+  justify-content: center;
+  line-height: 1em;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+#players {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  column-gap: 5px;
+  row-gap: 5px;
+  grid-area: p;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+      0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+      0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
