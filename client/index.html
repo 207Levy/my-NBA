@@ -13,7 +13,7 @@
   <body>
     <script id="players-template" type="text/x-handlebars-template">
       {{#each player}}
-        <div class="player">
+        <div class="player" data-id="{{personId}}">
           <p class="player-name">{{firstName}} {{lastName}}</p>
           <p class="jersey">{{jersey}}</p>
           <img class="player-image" src="{{img}}" alt="player-pic" />
