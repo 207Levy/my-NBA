@@ -8,11 +8,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-class NbaModel {
-    getTeam(teamName, year, isActive) {
+class Controller {
+    constructor() {
+        this.renderer = new Renderer();
+        this.nbaDataModel = new NbaModel();
+    }
+    loadTeam() {
         return __awaiter(this, void 0, void 0, function* () {
-            NbaModel.currentTeam = yield $.get(`/team?teamName=${teamName}&year=${year}&isActive=${isActive}`);
-            return NbaModel.currentTeam;
+            const teamName = String($("#team-input").val());
+            const year = String($("#year-input").val());
+            const isActive = $('#active-player').is(':checked');
+            const teamToRender = yield this.nbaDataModel.getTeam(teamName, year, isActive);
+            this.renderer.render(teamToRender);
         });
     }
 }
+const controller = new Controller();

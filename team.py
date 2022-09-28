@@ -15,8 +15,8 @@ class Team():
     def __init__(self, team_info: Team_meta, players: list[Player] = None):
         self.players = players
         self.id = team_info.teamId
-        self.full_name = team_info.fullName
-        self.is_in_nba = team_info.isNBAFranchise
+        self.fullName = team_info.fullName
+        self.isInNba = team_info.isNBAFranchise
         self.city = team_info.city
 
     def set_players(self, players: list[Player]):

@@ -6,11 +6,18 @@ body {
   background-size: 90%;
   height: 100%;
   display: grid;
-  grid-template-rows: 1fr 1fr 5fr;
+  grid-template-rows: 70px 70px 1fr;
   grid-template-areas:
     "h"
     "s"
     "p";
+}
+
+#go-to-dt {
+  border-radius: 50%;
+  position: sticky;
+  top: 50%;
+  left: 50%;
 }
 
 #headline {
@@ -56,18 +63,15 @@ body {
   grid-area: yi;
 }
 
-#search-btn {
+button {
   border-radius: inherit;
   font-family: inherit;
-  grid-area: sb;
   align-items: center;
   background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   border: 0;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
   color: #ffffff;
-  display: flex;
-  font-size: large;
   justify-content: center;
   line-height: 1em;
   padding: 3px;
@@ -79,6 +83,16 @@ body {
   cursor: pointer;
 }
 
+#search-btn {
+  grid-area: sb;
+  font-size: large;
+  display: flex;
+}
+
+.add-to-dt {
+  border-radius: 10px;
+}
+
 #players {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -87,6 +101,18 @@ body {
   column-gap: 5px;
   row-gap: 5px;
   grid-area: p;
+}
+
+.player {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  background-color: orange;
+}
+
+.player-image {
+  max-width: 100%;
+  height: auto;
 }
 
 @-webkit-keyframes glow {

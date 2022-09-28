@@ -3,4 +3,5 @@ interface Team{
     isNBAFranchise: boolean
     fullName: string
     teamId: string
+    players: Player[]
 }
