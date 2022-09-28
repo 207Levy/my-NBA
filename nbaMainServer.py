@@ -1,5 +1,4 @@
-from inspect import _void
-from xmlrpc.client import boolean
+
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -23,7 +22,7 @@ async def root():
 
 
 @app.get("/team/")
-async def get_book(teamName: str = "", year: str = "2020", isActive: boolean = False):
+async def get_book(teamName: str = "", year: str = "2020", isActive: bool = False):
     players_response = requests.get(
         urlConstants.BASE_URL + urlConstants.LEAGUE_YEAR_PLAYERS["route"] % (year))
     teams_response = requests.get(
@@ -93,7 +92,6 @@ def make_team(players, teams, team_name) -> Team:
 
     if team_json is None:
         raise HTTPException(status_code=404, detail="Team not found")
-    print(team_json)
     team_meta = Team_meta(**team_json)
 
     players_in_team = [Player(**p, img=urlConstants.IMG_URL["route"] % (

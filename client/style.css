@@ -14,10 +14,10 @@ body {
 }
 
 #go-to-dt {
-  border-radius: 50%;
-  position: sticky;
-  top: 50%;
-  left: 50%;
+  border-radius: 50px;
+  position: fixed;
+  top: 5%;
+  left: 5%;
 }
 
 #headline {
