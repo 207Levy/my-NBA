@@ -108,6 +108,8 @@ button {
   align-items: center;
   justify-items: center;
   background-color: orange;
+  max-width: fit-content;
+  height: -webkit-fill-available;
 }
 
 .player-image {

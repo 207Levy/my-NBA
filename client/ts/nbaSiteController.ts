@@ -9,6 +9,10 @@ class Controller {
         const teamToRender: Team = await this.nbaDataModel.getTeam(teamName, year, isActive)
         this.renderer.render(teamToRender)
     }
+
+    emptyPlayerImg = function(img: HTMLImageElement): void{
+        img.src = "client/empty-user1.png"
+    }
 } 
 
 const controller = new Controller() 

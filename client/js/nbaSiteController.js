@@ -12,6 +12,9 @@ class Controller {
     constructor() {
         this.renderer = new Renderer();
         this.nbaDataModel = new NbaModel();
+        this.emptyPlayerImg = function (img) {
+            img.src = "client/empty-user1.png";
+        };
     }
     loadTeam() {
         return __awaiter(this, void 0, void 0, function* () {
