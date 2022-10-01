@@ -6,5 +6,6 @@ interface Player {
     jersey: string
     pos: string
     isActive: boolean
+    isInDreamTeam: boolean
     img: string
 }

@@ -8,13 +8,12 @@ class Team_meta(BaseModel):
     isNBAFranchise: bool
     fullName: str
     teamId: str
-    
 
 
 class Team():
     def __init__(self, team_info: Team_meta, players: list[Player] = None):
         self.players = players
-        self.id = team_info.teamId
+        self.teamId = team_info.teamId
         self.fullName = team_info.fullName
         self.isInNba = team_info.isNBAFranchise
         self.city = team_info.city
@@ -28,7 +27,7 @@ class Team():
             return
 
         for player in self.players:
-            if player_to_add.id == player.id:
+            if player_to_add.get("personId") == player.get("personId"):
                 return {"message": "player allready exists in this team!"}
 
         self.players.append(player_to_add)

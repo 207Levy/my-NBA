@@ -8,6 +8,7 @@ class Renderer {
         this.renderTeamPlayers(data);
     }
     renderTeamPlayers(team) {
+        const isDreamTeam = team.teamId === '0' ? true : false;
         const inject = this.playersTemplate({ "player": team.players });
         $("#players").append(inject);
     }

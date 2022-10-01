@@ -23,11 +23,23 @@
             onerror="controller.emptyPlayerImg(this)"
           />
           <p class="pos">{{pos}}</p>
-          <button class="add-to-dt">add to Dream-Team</button>
+          {{#if isInDreamTeam}}
+            <button
+              class="del-from-dt"
+              onclick="controller.deletePlayerFromDreamTeam('{{personId}}')"
+            >delete from Dream-Team</button>
+          {{else}}
+            <button
+              class="add-to-dt"
+              onclick="controller.addPlayerToDreamTeam('{{personId}}')"
+            >add to Dream-Team</button>
+          {{/if}}
         </div>
       {{/each}}
     </script>
-    <button id="go-to-dt">Your Dream-Team</button>
+    <button id="go-to-dt" onclick="controller.loadDreamTeam()">
+      Your Dream-Team
+    </button>
     <h1 id="headline">My NBA</h1>
 
     <div class="search">

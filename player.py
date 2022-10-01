@@ -10,4 +10,6 @@ class Player(BaseModel):
     jersey: str
     pos: str
     isActive: bool
+    isInDreamTeam: bool = False
+    
     img: str = ""

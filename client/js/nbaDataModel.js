@@ -15,4 +15,30 @@ class NbaModel {
             return NbaModel.currentTeam;
         });
     }
+    getDreamTeam() {
+        return __awaiter(this, void 0, void 0, function* () {
+            NbaModel.currentTeam = yield $.get(`/dreamTeam/`);
+            return NbaModel.currentTeam;
+        });
+    }
+    addPlayer(playerId) {
+        if (NbaModel.currentTeam === null || NbaModel.currentTeam.teamId === "0") {
+            throw "cant access team's data...";
+        }
+        for (const player of NbaModel.currentTeam.players) {
+            if (player.personId === playerId) {
+                $.post(`/dreamTeam`, JSON.stringify(player));
+                return;
+            }
+        }
+    }
+    deletePlayer(playerId) {
+        if (NbaModel.currentTeam.teamId !== "0") {
+            throw "cant access Dream-team's data...";
+        }
+        $.ajax({
+            url: `/dreamTeam?playerId=${playerId}`,
+            type: 'DELETE',
+        });
+    }
 }

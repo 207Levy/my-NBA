@@ -25,5 +25,18 @@ class Controller {
             this.renderer.render(teamToRender);
         });
     }
+    loadDreamTeam() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const teamToRender = yield this.nbaDataModel.getDreamTeam();
+            this.renderer.render(teamToRender);
+        });
+    }
+    addPlayerToDreamTeam(playerId) {
+        this.nbaDataModel.addPlayer(playerId);
+    }
+    deletePlayerFromDreamTeam(playerId) {
+        this.nbaDataModel.deletePlayer(playerId);
+        this.loadDreamTeam();
+    }
 }
 const controller = new Controller();

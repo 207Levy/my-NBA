@@ -11,7 +11,7 @@ import urlConstants
 
 dreamTeamMeta = Team_meta(city="", isNBAFranchise=False,
                           fullName="Dream-Team", teamId="0")
-dreamTeam = Team(dreamTeamMeta)
+dreamTeam = Team(dreamTeamMeta, [])
 app = FastAPI()
 app.mount("/client", StaticFiles(directory="client"), name="client")
 
@@ -37,40 +37,36 @@ async def get_book(teamName: str = "", year: str = "2020", isActive: bool = Fals
 
     return team_to_return
 
-app.get("/statistics")
 
-
+@app.get("/statistics/")
 async def get_playwr_statistics(firstName: str = "", lastName: str = ""):
     statistics = await requests.get(urlConstants.PLAYER_STATS["route" % (lastName, firstName)])
     return statistics.json()
 
-app.get("/dreamTeam")
 
-
+@app.get("/dreamTeam/")
 def getDreamTeam():
     return dreamTeam
 
 
-app.post("/dreamTeam")
-
-
-def add_player_to_dream_team(playerRequest: Request) -> None:
-    player = playerRequest.json()
+@app.post("/dreamTeam")
+async def add_player_to_dream_team(playerRequest: Request) -> None:
+    player = await playerRequest.json()
     if (player in dreamTeam.players):
         raise HTTPException(
             status_code=500, detail="Player already exisit in dream-team!")
+    player['isInDreamTeam'] = True
     dreamTeam.add_player(player)
     return
 
 
-app.delete("/dreamTeam")
-
-
+@app.delete("/dreamTeam")
 def delete_player_from_dream_team(playerId: str) -> None:
     playerToDelete = None
     for player in dreamTeam.players:
-        if player.personId == playerId:
+        if player.get('personId') == playerId:
             playerToDelete = player
+            break
     if playerToDelete is None:
         raise HTTPException(
             status_code=500, detail="Player not found in dream-team!")

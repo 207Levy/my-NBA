@@ -93,6 +93,10 @@ button {
   border-radius: 10px;
 }
 
+.del-from-dt {
+  border-radius: 10px;
+}
+
 #players {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
