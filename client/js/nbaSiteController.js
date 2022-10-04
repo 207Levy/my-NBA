@@ -32,7 +32,7 @@ class Controller {
         return __awaiter(this, void 0, void 0, function* () {
             const player = $(`#${personId}`);
             if (player.children('.statistics').length > 0) {
-                player.find('.statistics').show();
+                player.find('.statistics').slideDown();
             }
             else {
                 const statsToRender = yield this.nbaDataModel.getPlayerStatistics(firstName, lastName);
@@ -53,7 +53,8 @@ class Controller {
     closeStatistics(cancelBtn) {
         const statisticsDiv = cancelBtn.parentElement;
         if (statisticsDiv !== null) {
-            statisticsDiv.style.display = "none";
+            // statisticsDiv.style.display = "none"
+            $(statisticsDiv).slideUp();
         }
     }
 }

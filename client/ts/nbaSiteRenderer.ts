@@ -25,6 +25,8 @@ class Renderer{
     public renderStats(stats: Statistics, player: JQuery<HTMLElement>): void {
             const inject = this.statisticsTemplate(stats);
             player.append(inject);
+            player.find('.statistics').hide()
+            player.find('.statistics').slideDown()
     }
 
     private emptyAll():void {

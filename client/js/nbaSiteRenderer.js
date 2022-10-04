@@ -16,6 +16,8 @@ class Renderer {
     renderStats(stats, player) {
         const inject = this.statisticsTemplate(stats);
         player.append(inject);
+        player.find('.statistics').hide();
+        player.find('.statistics').slideDown();
     }
     emptyAll() {
         $("#players").empty();

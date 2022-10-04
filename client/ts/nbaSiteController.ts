@@ -18,7 +18,7 @@ class Controller {
     async loadPlayerStatistics(personId: string ,firstName: string, lastName: string){
         const player: JQuery<HTMLElement> = $(`#${personId}`)
         if(player.children('.statistics').length > 0){
-            player.find('.statistics').show()
+            player.find('.statistics').slideDown()
         }
         else{
             const statsToRender: Statistics = await this.nbaDataModel.getPlayerStatistics(firstName, lastName)
@@ -43,7 +43,8 @@ class Controller {
     closeStatistics(cancelBtn: HTMLButtonElement):void{
         const statisticsDiv: HTMLElement | null = cancelBtn.parentElement
         if(statisticsDiv !== null){
-            statisticsDiv.style.display = "none"
+            // statisticsDiv.style.display = "none"
+            $(statisticsDiv).slideUp()
         }
     }
 
