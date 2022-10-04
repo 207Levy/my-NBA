@@ -12,9 +12,6 @@ class Controller {
     constructor() {
         this.renderer = new Renderer();
         this.nbaDataModel = new NbaModel();
-        this.emptyPlayerImg = function (img) {
-            img.src = "client/empty-user1.png";
-        };
     }
     loadTeam() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -31,12 +28,33 @@ class Controller {
             this.renderer.render(teamToRender);
         });
     }
+    loadPlayerStatistics(personId, firstName, lastName) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const player = $(`#${personId}`);
+            if (player.children('.statistics').length > 0) {
+                player.find('.statistics').show();
+            }
+            else {
+                const statsToRender = yield this.nbaDataModel.getPlayerStatistics(firstName, lastName);
+                this.renderer.renderStats(statsToRender, player);
+            }
+        });
+    }
     addPlayerToDreamTeam(playerId) {
         this.nbaDataModel.addPlayer(playerId);
     }
     deletePlayerFromDreamTeam(playerId) {
         this.nbaDataModel.deletePlayer(playerId);
         this.loadDreamTeam();
+    }
+    emptyPlayerImg(img) {
+        img.src = "client/empty-user1.png";
+    }
+    closeStatistics(cancelBtn) {
+        const statisticsDiv = cancelBtn.parentElement;
+        if (statisticsDiv !== null) {
+            statisticsDiv.style.display = "none";
+        }
     }
 }
 const controller = new Controller();

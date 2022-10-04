@@ -12,6 +12,11 @@ class NbaModel{
         return NbaModel.currentTeam
     }
 
+    async getPlayerStatistics(firstName: string, lastName: string): Promise<Statistics>{
+        const statistics: Statistics = await $.get(`/statistics?lastName=${lastName}&firstName=${firstName}`)
+        return statistics
+    }
+
     addPlayer(playerId: string): void{
         if(NbaModel.currentTeam === null || NbaModel.currentTeam.teamId === "0"){
          throw "cant access team's data..."

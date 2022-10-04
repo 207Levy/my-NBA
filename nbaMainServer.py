@@ -7,6 +7,7 @@ import requests
 import json
 from player import Player
 from team import Team, Team_meta
+from playerStatistics import Statistics
 import urlConstants
 
 dreamTeamMeta = Team_meta(city="", isNBAFranchise=False,
@@ -22,30 +23,41 @@ async def root():
 
 
 @app.get("/team/")
-async def get_book(teamName: str = "", year: str = "2020", isActive: bool = False):
-    players_response = requests.get(
-        urlConstants.BASE_URL + urlConstants.LEAGUE_YEAR_PLAYERS["route"] % (year))
-    teams_response = requests.get(
-        urlConstants.BASE_URL + urlConstants.LEAGUE_YEAR_TEAMS["route"] % year)
+async def get_team(teamName: str = "", year: str = "2020", isActive: bool = False):
+    try:
+        players_response = requests.get(
+            urlConstants.BASE_URL + urlConstants.LEAGUE_YEAR_PLAYERS["route"] % (year))
+        teams_response = requests.get(
+            urlConstants.BASE_URL + urlConstants.LEAGUE_YEAR_TEAMS["route"] % year)
 
-    players_json = players_response.json()["league"]["standard"]
-    teams_json = teams_response.json()["league"]["standard"]
+        players_json = players_response.json()["league"]["standard"]
+        teams_json = teams_response.json()["league"]["standard"]
 
-    team_to_return = make_team(players_json, teams_json, teamName)
-    if (isActive):
-        team_to_return = filter_active_players(team_to_return)
-
+        team_to_return = make_team(players_json, teams_json, teamName)
+        if (isActive):
+            team_to_return = filter_active_players(team_to_return)
+    except requests.exceptions.HTTPError as err:
+         raise HTTPException(
+            status_code=500, detail=f"Team not found... \nTeam: {teamName}, Year: {year}.")
+         
     return team_to_return
 
 
 @app.get("/statistics/")
-async def get_playwr_statistics(firstName: str = "", lastName: str = ""):
-    statistics = await requests.get(urlConstants.PLAYER_STATS["route" % (lastName, firstName)])
-    return statistics.json()
+async def get_player_statistics(firstName: str = "", lastName: str = ""):
+    try:
+        statistics_response: requests.Response = requests.get(urlConstants.PLAYER_STATS["route"] % (lastName, firstName))
+        statistics_json = statistics_response.json()
+        statistics = Statistics(**statistics_json)
+        print(statistics)
+    except requests.exceptions.HTTPError as err:
+         raise HTTPException(
+            status_code=500, detail=f"Player Statistic not found... \nFirst name: {firstName}, Last name: {lastName}.")
+    return statistics
 
 
 @app.get("/dreamTeam/")
-def getDreamTeam():
+def getDreamTeam():  
     return dreamTeam
 
 

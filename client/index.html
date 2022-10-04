@@ -13,7 +13,7 @@
   <body>
     <script id="players-template" type="text/x-handlebars-template">
       {{#each player}}
-        <div class="player" data-id="{{personId}}">
+        <div class="player" id="{{personId}}">
           <p class="player-name">{{firstName}} {{lastName}}</p>
           <p class="jersey">{{jersey}}</p>
           <img
@@ -23,20 +23,45 @@
             onerror="controller.emptyPlayerImg(this)"
           />
           <p class="pos">{{pos}}</p>
-          {{#if isInDreamTeam}}
+          <div class="btns">
             <button
-              class="del-from-dt"
-              onclick="controller.deletePlayerFromDreamTeam('{{personId}}')"
-            >delete from Dream-Team</button>
-          {{else}}
-            <button
-              class="add-to-dt"
-              onclick="controller.addPlayerToDreamTeam('{{personId}}')"
-            >add to Dream-Team</button>
-          {{/if}}
+              class="stats"
+              onclick="controller.loadPlayerStatistics('{{personId}}', '{{firstName}}', '{{lastName}}')"
+            >Stats</button>
+            {{#if isInDreamTeam}}
+              <button
+                class="del-from-dt"
+                onclick="controller.deletePlayerFromDreamTeam('{{personId}}')"
+              >Delete from Dream-Team</button>
+            {{else}}
+              <button
+                class="add-to-dt"
+                onclick="controller.addPlayerToDreamTeam('{{personId}}')"
+              >Add to Dream-Team</button>
+            {{/if}}
+
+          </div>
         </div>
       {{/each}}
     </script>
+
+    <script id="statistics-template" type="text/x-handlebars-template">
+      <div class="statistics">
+        <h2>Statistics</h2>
+        <p class="rating">Rating: {{player_efficiency_rating}}</p>
+        <p class="minutes">Average minutes per game: {{minutes_per_game}}</p>
+        <p class="field">Average field shots: {{field_goal_percentage}}%</p>
+        <p class="free">Average free shots: {{free_throw_percentage}}%</p>
+        <p class="three">Average three-poin shots:
+          {{three_point_percentage}}%</p>
+        <button
+          class="close-btn"
+          onclick="controller.closeStatistics(this)"
+        >Close</button>
+
+      </div>
+    </script>
+
     <button id="go-to-dt" onclick="controller.loadDreamTeam()">
       Your Dream-Team
     </button>

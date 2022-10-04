@@ -15,6 +15,18 @@ class Controller {
         this.renderer.render(teamToRender)
     }
 
+    async loadPlayerStatistics(personId: string ,firstName: string, lastName: string){
+        const player: JQuery<HTMLElement> = $(`#${personId}`)
+        if(player.children('.statistics').length > 0){
+            player.find('.statistics').show()
+        }
+        else{
+            const statsToRender: Statistics = await this.nbaDataModel.getPlayerStatistics(firstName, lastName)
+            this.renderer.renderStats(statsToRender, player)
+        }
+
+    }
+
     addPlayerToDreamTeam(playerId: string): void{
         this.nbaDataModel.addPlayer(playerId)
     }
@@ -24,8 +36,15 @@ class Controller {
         this.loadDreamTeam()
     }
 
-    emptyPlayerImg = function(img: HTMLImageElement): void{
+    emptyPlayerImg(img: HTMLImageElement): void{
         img.src = "client/empty-user1.png"
+    }
+
+    closeStatistics(cancelBtn: HTMLButtonElement):void{
+        const statisticsDiv: HTMLElement | null = cancelBtn.parentElement
+        if(statisticsDiv !== null){
+            statisticsDiv.style.display = "none"
+        }
     }
 
 

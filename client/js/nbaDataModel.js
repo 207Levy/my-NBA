@@ -21,6 +21,12 @@ class NbaModel {
             return NbaModel.currentTeam;
         });
     }
+    getPlayerStatistics(firstName, lastName) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const statistics = yield $.get(`/statistics?lastName=${lastName}&firstName=${firstName}`);
+            return statistics;
+        });
+    }
     addPlayer(playerId) {
         if (NbaModel.currentTeam === null || NbaModel.currentTeam.teamId === "0") {
             throw "cant access team's data...";
