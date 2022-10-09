@@ -4,7 +4,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import uvicorn
 import requests
-import json
 from player import Player
 from team import Team, Team_meta
 from playerStatistics import Statistics
@@ -27,9 +26,10 @@ async def get_team(teamName: str = "", year: str = "2020", isActive: bool = Fals
     try:
         players_response = requests.get(
             urlConstants.BASE_URL + urlConstants.LEAGUE_YEAR_PLAYERS["route"] % (year))
+        players_response.raise_for_status()
         teams_response = requests.get(
             urlConstants.BASE_URL + urlConstants.LEAGUE_YEAR_TEAMS["route"] % year)
-
+        teams_response.raise_for_status()
         players_json = players_response.json()["league"]["standard"]
         teams_json = teams_response.json()["league"]["standard"]
 
@@ -56,7 +56,7 @@ async def get_player_statistics(firstName: str = "", lastName: str = ""):
     return statistics
 
 
-@app.get("/dreamTeam/")
+@app.get("/dreamTeam")
 def getDreamTeam():  
     return dreamTeam
 

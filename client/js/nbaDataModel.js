@@ -17,7 +17,7 @@ class NbaModel {
     }
     getDreamTeam() {
         return __awaiter(this, void 0, void 0, function* () {
-            NbaModel.currentTeam = yield $.get(`/dreamTeam/`);
+            NbaModel.currentTeam = yield $.get(`/dreamTeam`);
             return NbaModel.currentTeam;
         });
     }

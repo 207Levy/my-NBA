@@ -1,0 +1,228 @@
+{
+    "players": [
+        {
+            "firstName": "Kostas",
+            "lastName": "Antetokounmpo",
+            "personId": "1628961",
+            "teamId": "1610612741",
+            "jersey": "37",
+            "pos": "F",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Antetokounmpo/Kostas"
+        },
+        {
+            "firstName": "Lonzo",
+            "lastName": "Ball",
+            "personId": "1628366",
+            "teamId": "1610612741",
+            "jersey": "2",
+            "pos": "G",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Ball/Lonzo"
+        },
+        {
+            "firstName": "Tony",
+            "lastName": "Bradley",
+            "personId": "1628396",
+            "teamId": "1610612741",
+            "jersey": "13",
+            "pos": "C-F",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Bradley/Tony"
+        },
+        {
+            "firstName": "Alex",
+            "lastName": "Caruso",
+            "personId": "1627936",
+            "teamId": "1610612741",
+            "jersey": "6",
+            "pos": "G",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Caruso/Alex"
+        },
+        {
+            "firstName": "DeMar",
+            "lastName": "DeRozan",
+            "personId": "201942",
+            "teamId": "1610612741",
+            "jersey": "11",
+            "pos": "G-F",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/DeRozan/DeMar"
+        },
+        {
+            "firstName": "Ayo",
+            "lastName": "Dosunmu",
+            "personId": "1630245",
+            "teamId": "1610612741",
+            "jersey": "12",
+            "pos": "G",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Dosunmu/Ayo"
+        },
+        {
+            "firstName": "Goran",
+            "lastName": "Dragic",
+            "personId": "201609",
+            "teamId": "1610612741",
+            "jersey": "9",
+            "pos": "G",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Dragic/Goran"
+        },
+        {
+            "firstName": "Andre",
+            "lastName": "Drummond",
+            "personId": "203083",
+            "teamId": "1610612741",
+            "jersey": "0",
+            "pos": "C",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Drummond/Andre"
+        },
+        {
+            "firstName": "Javon",
+            "lastName": "Freeman-Liberty",
+            "personId": "1631241",
+            "teamId": "1610612741",
+            "jersey": "",
+            "pos": "G",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Freeman-Liberty/Javon"
+        },
+        {
+            "firstName": "Javonte",
+            "lastName": "Green",
+            "personId": "1629750",
+            "teamId": "1610612741",
+            "jersey": "24",
+            "pos": "G-F",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Green/Javonte"
+        },
+        {
+            "firstName": "Malcolm",
+            "lastName": "Hill",
+            "personId": "1630792",
+            "teamId": "1610612741",
+            "jersey": "14",
+            "pos": "F",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Hill/Malcolm"
+        },
+        {
+            "firstName": "Carlik",
+            "lastName": "Jones",
+            "personId": "1630637",
+            "teamId": "1610612741",
+            "jersey": "",
+            "pos": "G",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Jones/Carlik"
+        },
+        {
+            "firstName": "Derrick",
+            "lastName": "Jones Jr.",
+            "personId": "1627884",
+            "teamId": "1610612741",
+            "jersey": "5",
+            "pos": "F",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Jones Jr./Derrick"
+        },
+        {
+            "firstName": "Zach",
+            "lastName": "LaVine",
+            "personId": "203897",
+            "teamId": "1610612741",
+            "jersey": "8",
+            "pos": "G-F",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/LaVine/Zach"
+        },
+        {
+            "firstName": "Justin",
+            "lastName": "Lewis",
+            "personId": "1631171",
+            "teamId": "1610612741",
+            "jersey": "",
+            "pos": "F",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Lewis/Justin"
+        },
+        {
+            "firstName": "Marko",
+            "lastName": "Simonovic",
+            "personId": "1630250",
+            "teamId": "1610612741",
+            "jersey": "19",
+            "pos": "C",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Simonovic/Marko"
+        },
+        {
+            "firstName": "Dalen",
+            "lastName": "Terry",
+            "personId": "1631207",
+            "teamId": "1610612741",
+            "jersey": "25",
+            "pos": "F",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Terry/Dalen"
+        },
+        {
+            "firstName": "Nikola",
+            "lastName": "Vucevic",
+            "personId": "202696",
+            "teamId": "1610612741",
+            "jersey": "9",
+            "pos": "C",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Vucevic/Nikola"
+        },
+        {
+            "firstName": "Coby",
+            "lastName": "White",
+            "personId": "1629632",
+            "teamId": "1610612741",
+            "jersey": "0",
+            "pos": "G",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/White/Coby"
+        },
+        {
+            "firstName": "Patrick",
+            "lastName": "Williams",
+            "personId": "1630172",
+            "teamId": "1610612741",
+            "jersey": "44",
+            "pos": "F",
+            "isActive": true,
+            "isInDreamTeam": false,
+            "img": "https://nba-players.herokuapp.com/players/Williams/Patrick"
+        }
+    ],
+    "teamId": "1610612741",
+    "fullName": "Chicago Bulls",
+    "isInNba": true,
+    "city": "Chicago"
+}

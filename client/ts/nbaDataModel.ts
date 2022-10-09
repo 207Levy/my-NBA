@@ -8,7 +8,7 @@ class NbaModel{
     }
 
     async getDreamTeam(): Promise<Team>{
-        NbaModel.currentTeam = await $.get(`/dreamTeam/`)
+        NbaModel.currentTeam = await $.get(`/dreamTeam`)
         return NbaModel.currentTeam
     }
 

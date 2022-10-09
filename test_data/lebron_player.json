@@ -1,0 +1,11 @@
+{
+    "firstName":"LeBron",
+    "lastName":"James",
+    "personId":"2544",
+    "teamId":"1610612747",
+    "jersey":"6",
+    "pos":"F",
+    "isActive":true,
+    "isInDreamTeam":false,
+    "img":"https://nba-players.herokuapp.com/players/James/LeBron"
+}
