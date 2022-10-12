@@ -43,7 +43,7 @@ def test_duplicate_in_dream_team():
     playerData = json.load(f)
     f.close()
     response = client.post('/dreamTeam', json.dumps(playerData))
-    assert response.status_code == 200
+    assert response.status_code == 201
     playerData['isInDreamTeam'] = True
     responseDuplicate = client.post('/dreamTeam', json.dumps(playerData))
     assert responseDuplicate.status_code == 500
@@ -54,7 +54,7 @@ def test_delete_from_dream_team():
     f.close()
     client.post('/dreamTeam', json.dumps(playerData))
     response = client.delete('/dreamTeam?playerId=2544')
-    assert response.status_code == 200
+    assert response.status_code == 204
   
   
 def test_delete_illegal_id_dream_team():

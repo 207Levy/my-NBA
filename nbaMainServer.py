@@ -1,5 +1,5 @@
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Response, status
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 import uvicorn
@@ -37,43 +37,45 @@ async def get_team(teamName: str = "", year: str = "2020", isActive: bool = Fals
         if (isActive):
             team_to_return = filter_active_players(team_to_return)
     except requests.exceptions.HTTPError as err:
-         raise HTTPException(
+        raise HTTPException(
             status_code=500, detail=f"Team not found... \nTeam: {teamName}, Year: {year}.")
-         
+
     return team_to_return
 
 
 @app.get("/statistics/")
 async def get_player_statistics(firstName: str = "", lastName: str = ""):
     try:
-        statistics_response: requests.Response = requests.get(urlConstants.PLAYER_STATS["route"] % (lastName, firstName))
+        statistics_response: requests.Response = requests.get(
+            urlConstants.PLAYER_STATS["route"] % (lastName, firstName))
         statistics_json = statistics_response.json()
         statistics = Statistics(**statistics_json)
         print(statistics)
     except requests.exceptions.HTTPError as err:
-         raise HTTPException(
+        raise HTTPException(
             status_code=500, detail=f"Player Statistic not found... \nFirst name: {firstName}, Last name: {lastName}.")
     return statistics
 
 
 @app.get("/dreamTeam")
-def getDreamTeam():  
+def getDreamTeam():
     return dreamTeam
 
 
 @app.post("/dreamTeam")
-async def add_player_to_dream_team(playerRequest: Request) -> None:
+async def add_player_to_dream_team(playerRequest: Request, response: Response) -> None:
     player = await playerRequest.json()
     if (player in dreamTeam.players):
         raise HTTPException(
             status_code=500, detail="Player already exisit in dream-team!")
     player['isInDreamTeam'] = True
     dreamTeam.add_player(player)
-    return
+    response.status_code = status.HTTP_201_CREATED
+    return player
 
 
 @app.delete("/dreamTeam")
-def delete_player_from_dream_team(playerId: str) -> None:
+def delete_player_from_dream_team(playerId: str, response: Response) -> None:
     playerToDelete = None
     for player in dreamTeam.players:
         if player.get('personId') == playerId:
@@ -84,6 +86,8 @@ def delete_player_from_dream_team(playerId: str) -> None:
             status_code=500, detail="Player not found in dream-team!")
     indexToDelete = dreamTeam.players.index(player)
     dreamTeam.players.pop(indexToDelete)
+    response.status_code = status.HTTP_204_NO_CONTENT
+    return
 
 
 def filter_active_players(team: Team) -> Team:
